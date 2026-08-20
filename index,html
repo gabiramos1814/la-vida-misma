@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Gestión</title>
+</head>
+
+<body>
+
+  <h1>Mi Gestión</h1>
+
+  <p>Mi espacio personal</p>
+
+  <hr>
+
+  <h2>📊 Finanzas</h2>
+  <p>Control de gastos e ingresos</p>
+
+  <h2>🏋️ Entrenamiento</h2>
+  <p>Registro de entrenamientos y progreso</p>
+
+  <h2>✈️ Viajes</h2>
+  <p>Organización de viajes y destinos</p>
+
+</body>
+</html>
