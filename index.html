@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Mi Gestión</title>
+  <title>La vida misma</title>
 
   <style>
     * {
@@ -26,36 +26,17 @@
     }
 
     header {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     header h1 {
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 6px;
     }
 
     header p {
       color: #777;
       font-size: 15px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      cursor: pointer;
-    }
-
-    .card h2 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: #777;
-      font-size: 14px;
     }
 
     .welcome {
@@ -73,6 +54,35 @@
     .welcome p {
       color: #ddd;
       font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card {
+      width: 100%;
+      background: white;
+      border: none;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.4;
     }
 
     footer {
@@ -80,6 +90,7 @@
       color: #999;
       font-size: 12px;
       margin-top: 30px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -89,35 +100,54 @@
   <div class="app">
 
     <header>
-      <h1>Mi Gestión</h1>
-      <p>Todo en un solo lugar</p>
+      <h1>La vida misma</h1>
+      <p>Todo lo importante, en un solo lugar.</p>
     </header>
 
     <div class="welcome">
       <h2>¡Hola! 👋</h2>
-      <p>Organizá tus finanzas, entrenamientos y viajes.</p>
+      <p>
+        Tu espacio personal para organizar,
+        registrar y entender tu día a día.
+      </p>
     </div>
 
-    <div class="card">
+    <button class="card" onclick="abrirFinanzas()">
       <h2>💰 Finanzas</h2>
       <p>Gastos, ingresos y control de tu dinero.</p>
-    </div>
+    </button>
 
-    <div class="card">
+    <button class="card" onclick="abrirEntrenamiento()">
       <h2>🏋️ Entrenamiento</h2>
       <p>CrossFit, sala, carreras y evolución.</p>
-    </div>
+    </button>
 
-    <div class="card">
+    <button class="card" onclick="abrirViajes()">
       <h2>✈️ Viajes</h2>
-      <p>Destinos, planificación y gastos de viaje.</p>
-    </div>
+      <p>Destinos, planificación y gastos.</p>
+    </button>
 
     <footer>
-      Mi Gestión · Versión 0.1
+      La vida misma · Versión 0.2
     </footer>
 
   </div>
+
+  <script>
+
+    function abrirFinanzas() {
+      alert("💰 Finanzas — próximamente");
+    }
+
+    function abrirEntrenamiento() {
+      alert("🏋️ Entrenamiento — próximamente");
+    }
+
+    function abrirViajes() {
+      alert("✈️ Viajes — próximamente");
+    }
+
+  </script>
 
 </body>
 </html>
