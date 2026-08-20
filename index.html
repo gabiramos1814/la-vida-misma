@@ -3,25 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Mi Gestión</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      color: #222;
+      padding: 20px;
+    }
+
+    .app {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    header {
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #777;
+      font-size: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      cursor: pointer;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .welcome {
+      background: #222;
+      color: white;
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>Mi Gestión</h1>
+  <div class="app">
 
-  <p>Mi espacio personal</p>
+    <header>
+      <h1>Mi Gestión</h1>
+      <p>Todo en un solo lugar</p>
+    </header>
 
-  <hr>
+    <div class="welcome">
+      <h2>¡Hola! 👋</h2>
+      <p>Organizá tus finanzas, entrenamientos y viajes.</p>
+    </div>
 
-  <h2>📊 Finanzas</h2>
-  <p>Control de gastos e ingresos</p>
+    <div class="card">
+      <h2>💰 Finanzas</h2>
+      <p>Gastos, ingresos y control de tu dinero.</p>
+    </div>
 
-  <h2>🏋️ Entrenamiento</h2>
-  <p>Registro de entrenamientos y progreso</p>
+    <div class="card">
+      <h2>🏋️ Entrenamiento</h2>
+      <p>CrossFit, sala, carreras y evolución.</p>
+    </div>
 
-  <h2>✈️ Viajes</h2>
-  <p>Organización de viajes y destinos</p>
+    <div class="card">
+      <h2>✈️ Viajes</h2>
+      <p>Destinos, planificación y gastos de viaje.</p>
+    </div>
+
+    <footer>
+      Mi Gestión · Versión 0.1
+    </footer>
+
+  </div>
 
 </body>
 </html>
