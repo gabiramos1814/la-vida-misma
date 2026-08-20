@@ -67,11 +67,6 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.06);
       text-align: left;
       cursor: pointer;
-      transition: transform 0.15s;
-    }
-
-    .card:active {
-      transform: scale(0.98);
     }
 
     .card h2 {
@@ -83,6 +78,132 @@
       color: #777;
       font-size: 14px;
       line-height: 1.4;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .back {
+      border: none;
+      background: none;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .summary-card {
+      background: white;
+      border-radius: 15px;
+      padding: 15px 10px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
+
+    .summary-card span {
+      display: block;
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 6px;
+    }
+
+    .summary-card strong {
+      font-size: 16px;
+    }
+
+    .form {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
+
+    .form h3 {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 6px;
+      margin-top: 12px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    .save {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 18px;
+      background: #222;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .movement {
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    }
+
+    .movement-info strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .movement-info small {
+      color: #888;
+    }
+
+    .income {
+      color: #20844a;
+    }
+
+    .expense {
+      color: #c0392b;
+    }
+
+    .delete {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #999;
+      padding: 20px;
     }
 
     footer {
@@ -99,53 +220,425 @@
 
   <div class="app">
 
-    <header>
-      <h1>La vida misma</h1>
-      <p>Todo lo importante, en un solo lugar.</p>
-    </header>
+    <!-- INICIO -->
 
-    <div class="welcome">
-      <h2>¡Hola! 👋</h2>
-      <p>
-        Tu espacio personal para organizar,
-        registrar y entender tu día a día.
-      </p>
+    <div id="inicio" class="screen active">
+
+      <header>
+        <h1>La vida misma</h1>
+        <p>Todo lo importante, en un solo lugar.</p>
+      </header>
+
+      <div class="welcome">
+        <h2>¡Hola! 👋</h2>
+        <p>
+          Tu espacio personal para organizar,
+          registrar y entender tu día a día.
+        </p>
+      </div>
+
+      <button class="card" onclick="mostrarFinanzas()">
+        <h2>💰 Finanzas</h2>
+        <p>Gastos, ingresos y control de tu dinero.</p>
+      </button>
+
+      <button class="card" onclick="alert('🏋️ Entrenamiento — próximamente')">
+        <h2>🏋️ Entrenamiento</h2>
+        <p>CrossFit, sala, carreras y evolución.</p>
+      </button>
+
+      <button class="card" onclick="alert('✈️ Viajes — próximamente')">
+        <h2>✈️ Viajes</h2>
+        <p>Destinos, planificación y gastos.</p>
+      </button>
+
+      <footer>
+        La vida misma · Versión 0.3
+      </footer>
+
     </div>
 
-    <button class="card" onclick="abrirFinanzas()">
-      <h2>💰 Finanzas</h2>
-      <p>Gastos, ingresos y control de tu dinero.</p>
-    </button>
 
-    <button class="card" onclick="abrirEntrenamiento()">
-      <h2>🏋️ Entrenamiento</h2>
-      <p>CrossFit, sala, carreras y evolución.</p>
-    </button>
+    <!-- FINANZAS -->
 
-    <button class="card" onclick="abrirViajes()">
-      <h2>✈️ Viajes</h2>
-      <p>Destinos, planificación y gastos.</p>
-    </button>
+    <div id="finanzas" class="screen">
 
-    <footer>
-      La vida misma · Versión 0.2
-    </footer>
+      <button class="back" onclick="volverInicio()">
+        ← Volver
+      </button>
+
+      <header>
+        <h1>💰 Finanzas</h1>
+        <p>Control de tus ingresos y gastos.</p>
+      </header>
+
+
+      <!-- RESUMEN -->
+
+      <div class="summary">
+
+        <div class="summary-card">
+          <span>Ingresos</span>
+          <strong id="totalIngresos">$0</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>Gastos</span>
+          <strong id="totalGastos">$0</strong>
+        </div>
+
+        <div class="summary-card">
+          <span>Saldo</span>
+          <strong id="saldo">$0</strong>
+        </div>
+
+      </div>
+
+
+      <!-- FORMULARIO -->
+
+      <div class="form">
+
+        <h3>➕ Nuevo movimiento</h3>
+
+        <label>Tipo</label>
+
+        <select id="tipo">
+          <option value="gasto">💸 Gasto</option>
+          <option value="ingreso">💰 Ingreso</option>
+        </select>
+
+
+        <label>Monto</label>
+
+        <input
+          type="number"
+          id="monto"
+          placeholder="Ej: 1500"
+          min="0"
+        >
+
+
+        <label>Categoría</label>
+
+        <select id="categoria">
+
+          <option value="Alimentación">🍔 Alimentación</option>
+
+          <option value="Transporte">🚗 Transporte</option>
+
+          <option value="Hogar">🏠 Hogar</option>
+
+          <option value="Salud">❤️ Salud</option>
+
+          <option value="Entretenimiento">🎬 Entretenimiento</option>
+
+          <option value="Compras">🛍️ Compras</option>
+
+          <option value="Viajes">✈️ Viajes</option>
+
+          <option value="Otros">📦 Otros</option>
+
+        </select>
+
+
+        <label>Descripción</label>
+
+        <input
+          type="text"
+          id="descripcion"
+          placeholder="Ej: Supermercado"
+        >
+
+
+        <label>Fecha</label>
+
+        <input
+          type="date"
+          id="fecha"
+        >
+
+
+        <button class="save" onclick="agregarMovimiento()">
+          Guardar movimiento
+        </button>
+
+      </div>
+
+
+      <!-- MOVIMIENTOS -->
+
+      <h3 style="margin-bottom: 12px;">
+        Movimientos
+      </h3>
+
+      <div id="listaMovimientos">
+
+        <div class="empty">
+          Todavía no hay movimientos.
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
+
   <script>
 
-    function abrirFinanzas() {
-      alert("💰 Finanzas — próximamente");
+    let movimientos =
+      JSON.parse(localStorage.getItem("movimientos")) || [];
+
+
+    function mostrarFinanzas() {
+
+      document.getElementById("inicio")
+        .classList.remove("active");
+
+      document.getElementById("finanzas")
+        .classList.add("active");
+
+      actualizarFinanzas();
+
     }
 
-    function abrirEntrenamiento() {
-      alert("🏋️ Entrenamiento — próximamente");
+
+    function volverInicio() {
+
+      document.getElementById("finanzas")
+        .classList.remove("active");
+
+      document.getElementById("inicio")
+        .classList.add("active");
+
     }
 
-    function abrirViajes() {
-      alert("✈️ Viajes — próximamente");
+
+    function agregarMovimiento() {
+
+      const tipo =
+        document.getElementById("tipo").value;
+
+      const monto =
+        Number(document.getElementById("monto").value);
+
+      const categoria =
+        document.getElementById("categoria").value;
+
+      const descripcion =
+        document.getElementById("descripcion").value;
+
+      const fecha =
+        document.getElementById("fecha").value;
+
+
+      if (!monto || monto <= 0) {
+
+        alert("Ingresá un monto válido.");
+
+        return;
+
+      }
+
+
+      const movimiento = {
+
+        id: Date.now(),
+
+        tipo: tipo,
+
+        monto: monto,
+
+        categoria: categoria,
+
+        descripcion:
+          descripcion || "Sin descripción",
+
+        fecha:
+          fecha || new Date().toISOString().split("T")[0]
+
+      };
+
+
+      movimientos.push(movimiento);
+
+
+      localStorage.setItem(
+        "movimientos",
+        JSON.stringify(movimientos)
+      );
+
+
+      document.getElementById("monto").value = "";
+
+      document.getElementById("descripcion").value = "";
+
+
+      actualizarFinanzas();
+
     }
+
+
+    function eliminarMovimiento(id) {
+
+      movimientos =
+        movimientos.filter(
+          movimiento => movimiento.id !== id
+        );
+
+
+      localStorage.setItem(
+        "movimientos",
+        JSON.stringify(movimientos)
+      );
+
+
+      actualizarFinanzas();
+
+    }
+
+
+    function actualizarFinanzas() {
+
+      let ingresos = 0;
+
+      let gastos = 0;
+
+
+      movimientos.forEach(movimiento => {
+
+        if (movimiento.tipo === "ingreso") {
+
+          ingresos += movimiento.monto;
+
+        } else {
+
+          gastos += movimiento.monto;
+
+        }
+
+      });
+
+
+      const saldo = ingresos - gastos;
+
+
+      document.getElementById("totalIngresos")
+        .textContent = formatearDinero(ingresos);
+
+
+      document.getElementById("totalGastos")
+        .textContent = formatearDinero(gastos);
+
+
+      document.getElementById("saldo")
+        .textContent = formatearDinero(saldo);
+
+
+      mostrarMovimientos();
+
+    }
+
+
+    function mostrarMovimientos() {
+
+      const lista =
+        document.getElementById("listaMovimientos");
+
+
+      if (movimientos.length === 0) {
+
+        lista.innerHTML =
+          '<div class="empty">Todavía no hay movimientos.</div>';
+
+        return;
+
+      }
+
+
+      lista.innerHTML = "";
+
+
+      movimientos
+        .slice()
+        .reverse()
+        .forEach(movimiento => {
+
+          const div =
+            document.createElement("div");
+
+
+          div.className = "movement";
+
+
+          const clase =
+            movimiento.tipo === "ingreso"
+              ? "income"
+              : "expense";
+
+
+          const signo =
+            movimiento.tipo === "ingreso"
+              ? "+"
+              : "-";
+
+
+          div.innerHTML = `
+
+            <div class="movement-info">
+
+              <strong>
+                ${movimiento.descripcion}
+              </strong>
+
+              <small>
+                ${movimiento.categoria}
+                · ${movimiento.fecha}
+              </small>
+
+            </div>
+
+            <div>
+
+              <strong class="${clase}">
+                ${signo}${formatearDinero(movimiento.monto)}
+              </strong>
+
+              <button
+                class="delete"
+                onclick="eliminarMovimiento(${movimiento.id})"
+              >
+                🗑️
+              </button>
+
+            </div>
+
+          `;
+
+
+          lista.appendChild(div);
+
+        });
+
+    }
+
+
+    function formatearDinero(numero) {
+
+      return new Intl.NumberFormat(
+        "es-UY",
+        {
+          style: "currency",
+          currency: "UYU",
+          maximumFractionDigits: 0
+        }
+      ).format(numero);
+
+    }
+
+
+    actualizarFinanzas();
 
   </script>
 
