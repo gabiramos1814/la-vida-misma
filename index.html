@@ -526,26 +526,29 @@
 
   const categorias = {};
 
-  const hoy = new Date();
+ const hoy = new Date();
 
-  const mesActual = hoy.getMonth();
-  const añoActual = hoy.getFullYear();
-
-
-  movimientos.forEach(movimiento => {
-
-    const fechaMovimiento = new Date(
-      movimiento.fecha + "T00:00:00"
-    );
-
-    const esEsteMes =
-      fechaMovimiento.getMonth() === mesActual &&
-      fechaMovimiento.getFullYear() === añoActual;
+const mesActual = hoy.getMonth() + 1;
+const añoActual = hoy.getFullYear();
 
 
-    if (!esEsteMes) {
-      return;
-    }
+movimientos.forEach(movimiento => {
+
+  const partesFecha = movimiento.fecha.split("-");
+
+  const añoMovimiento = Number(partesFecha[0]);
+  const mesMovimiento = Number(partesFecha[1]);
+
+
+  const esEsteMes =
+    añoMovimiento === añoActual &&
+    mesMovimiento === mesActual;
+
+
+  if (!esEsteMes) {
+    return;
+  }
+
 
 
     if (movimiento.tipo === "ingreso") {
