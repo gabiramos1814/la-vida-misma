@@ -275,24 +275,44 @@
 
       <!-- RESUMEN -->
 
-      <div class="summary">
+   <h2 style="margin-bottom: 15px;">📊 Este mes</h2>
 
-        <div class="summary-card">
-          <span>Ingresos</span>
-          <strong id="totalIngresos">$0</strong>
-        </div>
+<div class="summary">
 
-        <div class="summary-card">
-          <span>Gastos</span>
-          <strong id="totalGastos">$0</strong>
-        </div>
+  <div class="summary-card">
+    <span>Ingresos</span>
+    <strong id="totalIngresos">$0</strong>
+  </div>
 
-        <div class="summary-card">
-          <span>Saldo</span>
-          <strong id="saldo">$0</strong>
-        </div>
+  <div class="summary-card">
+    <span>Gastos</span>
+    <strong id="totalGastos">$0</strong>
+  </div>
 
-      </div>
+  <div class="summary-card">
+    <span>Saldo</span>
+    <strong id="saldo">$0</strong>
+  </div>
+
+</div>
+
+<div class="form">
+  <h3>📈 Uso de ingresos</h3>
+
+  <p id="porcentajeGastos" style="margin-top: 10px; color: #777;">
+    Todavía no hay ingresos registrados.
+  </p>
+</div>
+
+<div class="form">
+  <h3>🏷️ Gastos por categoría</h3>
+
+  <div id="categoriasGastos">
+    <div class="empty">
+      Todavía no hay gastos registrados.
+    </div>
+  </div>
+</div>
 
 
       <!-- FORMULARIO -->
@@ -501,44 +521,100 @@
 
     function actualizarFinanzas() {
 
-      let ingresos = 0;
+  let ingresos = 0;
+  let gastos = 0;
 
-      let gastos = 0;
+  const categorias = {};
+
+  movimientos.forEach(movimiento => {
+
+    if (movimiento.tipo === "ingreso") {
+
+      ingresos += movimiento.monto;
+
+    } else {
+
+      gastos += movimiento.monto;
+
+      if (!categorias[movimiento.categoria]) {
+        categorias[movimiento.categoria] = 0;
+      }
+
+      categorias[movimiento.categoria] += movimiento.monto;
+
+    }
+
+  });
+
+  const saldo = ingresos - gastos;
+
+  document.getElementById("totalIngresos")
+    .textContent = formatearDinero(ingresos);
+
+  document.getElementById("totalGastos")
+    .textContent = formatearDinero(gastos);
+
+  document.getElementById("saldo")
+    .textContent = formatearDinero(saldo);
 
 
-      movimientos.forEach(movimiento => {
+  // Porcentaje de ingresos gastado
 
-        if (movimiento.tipo === "ingreso") {
+  const porcentaje =
+    ingresos > 0
+      ? (gastos / ingresos) * 100
+      : 0;
 
-          ingresos += movimiento.monto;
+  const porcentajeTexto =
+    ingresos > 0
+      ? `Has gastado el ${porcentaje.toFixed(1)}% de tus ingresos.`
+      : "Todavía no hay ingresos registrados.";
 
-        } else {
+  document.getElementById("porcentajeGastos")
+    .textContent = porcentajeTexto;
 
-          gastos += movimiento.monto;
 
-        }
+  // Gastos por categoría
+
+  const contenedorCategorias =
+    document.getElementById("categoriasGastos");
+
+  if (Object.keys(categorias).length === 0) {
+
+    contenedorCategorias.innerHTML =
+      '<div class="empty">Todavía no hay gastos registrados.</div>';
+
+  } else {
+
+    contenedorCategorias.innerHTML = "";
+
+    Object.entries(categorias)
+      .sort((a, b) => b[1] - a[1])
+      .forEach(([categoria, monto]) => {
+
+        const fila =
+          document.createElement("div");
+
+        fila.style.display = "flex";
+        fila.style.justifyContent = "space-between";
+        fila.style.padding = "10px 0";
+        fila.style.borderBottom = "1px solid #eee";
+
+        fila.innerHTML = `
+          <span>${categoria}</span>
+          <strong>${formatearDinero(monto)}</strong>
+        `;
+
+        contenedorCategorias.appendChild(fila);
 
       });
 
-
-      const saldo = ingresos - gastos;
-
-
-      document.getElementById("totalIngresos")
-        .textContent = formatearDinero(ingresos);
+  }
 
 
-      document.getElementById("totalGastos")
-        .textContent = formatearDinero(gastos);
+  mostrarMovimientos();
 
-
-      document.getElementById("saldo")
-        .textContent = formatearDinero(saldo);
-
-
-      mostrarMovimientos();
-
-    }
+}
 
 
     function mostrarMovimientos() {
