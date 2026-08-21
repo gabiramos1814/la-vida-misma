@@ -526,7 +526,27 @@
 
   const categorias = {};
 
+  const hoy = new Date();
+
+  const mesActual = hoy.getMonth();
+  const añoActual = hoy.getFullYear();
+
+
   movimientos.forEach(movimiento => {
+
+    const fechaMovimiento = new Date(
+      movimiento.fecha + "T00:00:00"
+    );
+
+    const esEsteMes =
+      fechaMovimiento.getMonth() === mesActual &&
+      fechaMovimiento.getFullYear() === añoActual;
+
+
+    if (!esEsteMes) {
+      return;
+    }
+
 
     if (movimiento.tipo === "ingreso") {
 
@@ -535,6 +555,7 @@
     } else {
 
       gastos += movimiento.monto;
+
 
       if (!categorias[movimiento.categoria]) {
         categorias[movimiento.categoria] = 0;
@@ -546,13 +567,17 @@
 
   });
 
+
   const saldo = ingresos - gastos;
+
 
   document.getElementById("totalIngresos")
     .textContent = formatearDinero(ingresos);
 
+
   document.getElementById("totalGastos")
     .textContent = formatearDinero(gastos);
+
 
   document.getElementById("saldo")
     .textContent = formatearDinero(saldo);
@@ -565,10 +590,12 @@
       ? (gastos / ingresos) * 100
       : 0;
 
+
   const porcentajeTexto =
     ingresos > 0
       ? `Has gastado el ${porcentaje.toFixed(1)}% de tus ingresos.`
       : "Todavía no hay ingresos registrados.";
+
 
   document.getElementById("porcentajeGastos")
     .textContent = porcentajeTexto;
@@ -579,14 +606,16 @@
   const contenedorCategorias =
     document.getElementById("categoriasGastos");
 
+
   if (Object.keys(categorias).length === 0) {
 
     contenedorCategorias.innerHTML =
-      '<div class="empty">Todavía no hay gastos registrados.</div>';
+      '<div class="empty">Todavía no hay gastos registrados este mes.</div>';
 
   } else {
 
     contenedorCategorias.innerHTML = "";
+
 
     Object.entries(categorias)
       .sort((a, b) => b[1] - a[1])
@@ -595,15 +624,18 @@
         const fila =
           document.createElement("div");
 
+
         fila.style.display = "flex";
         fila.style.justifyContent = "space-between";
         fila.style.padding = "10px 0";
         fila.style.borderBottom = "1px solid #eee";
 
+
         fila.innerHTML = `
           <span>${categoria}</span>
           <strong>${formatearDinero(monto)}</strong>
         `;
+
 
         contenedorCategorias.appendChild(fila);
 
