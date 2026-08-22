@@ -765,6 +765,7 @@ select:focus {
 
 let marcas =
   JSON.parse(localStorage.getItem("marcas")) || [];
+
     function mostrarFinanzas() {
 
   document.getElementById("inicio")
@@ -775,9 +776,15 @@ let marcas =
 
   localStorage.setItem("pantallaActiva", "finanzas");
 
-  actualizarFinanzas();
-}
+  const fecha = document.getElementById("fecha");
 
+  if (fecha && !fecha.value) {
+    fecha.value = new Date().toISOString().split("T")[0];
+  }
+
+  actualizarFinanzas();
+
+}
 function mostrarEntrenamiento() {
 
   document.getElementById("inicio")
