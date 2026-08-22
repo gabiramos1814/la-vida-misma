@@ -78,15 +78,16 @@
 }
 
   .card {
+  display: block;
   width: 100%;
   background: #2d2d2d;
-  border: 1px solid #3a3a3a;
+  border: 1px solid #333333;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 12px;
-  box-shadow: none;
   text-align: left;
   cursor: pointer;
+  color: #ffffff;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -95,9 +96,14 @@
   border-color: #FF6B35;
 }
 
+.card:active {
+  transform: scale(0.98);
+}
+
 .card h2 {
   color: #FF6B35;
   font-size: 20px;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -106,7 +112,6 @@
   font-size: 14px;
   line-height: 1.6;
 }
-
   .screen {
     display: none;
   }
