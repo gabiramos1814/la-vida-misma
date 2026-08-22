@@ -1090,30 +1090,45 @@ function guardarMarca() {
     Number(document.getElementById("marcaPeso").value);
 
   const fecha =
-    document.getElementById("marcaFecha").value;
+    document.getElementById("marcaFecha").value ||
+    new Date().toISOString().split("T")[0];
 
   if (!peso || peso <= 0) {
-
     alert("Ingresá un peso válido.");
-
     return;
-
   }
 
-  const marca = {
+  const indiceExistente = marcas.findIndex(
+    marca => marca.ejercicio === ejercicio
+  );
 
-    id: Date.now(),
+  if (indiceExistente !== -1) {
 
-    ejercicio: ejercicio,
+    if (peso > marcas[indiceExistente].peso) {
 
-    peso: peso,
+      marcas[indiceExistente].peso = peso;
+      marcas[indiceExistente].fecha = fecha;
 
-    fecha: fecha ||
-      new Date().toISOString().split("T")[0]
+    } else {
 
-  };
+      alert(
+        `Tu mejor marca de ${ejercicio} sigue siendo ${marcas[indiceExistente].peso} kg.`
+      );
 
-  marcas.push(marca);
+      return;
+    }
+
+  } else {
+
+    const marca = {
+      id: Date.now(),
+      ejercicio: ejercicio,
+      peso: peso,
+      fecha: fecha
+    };
+
+    marcas.push(marca);
+  }
 
   localStorage.setItem(
     "marcas",
@@ -1121,11 +1136,11 @@ function guardarMarca() {
   );
 
   document.getElementById("marcaPeso").value = "";
-
   document.getElementById("marcaFecha").value = "";
 
-  alert("🏆 Marca guardada.");
+  mostrarMarcas();
 
+  alert("🏆 ¡Nueva mejor marca guardada!");
 }
     function formatearDinero(numero) {
 
