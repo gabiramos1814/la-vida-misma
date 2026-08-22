@@ -876,21 +876,27 @@ function volverInicio() {
 
     function eliminarMovimiento(id) {
 
-      movimientos =
-        movimientos.filter(
-          movimiento => movimiento.id !== id
-        );
+  const confirmar = confirm(
+    "¿Seguro que querés eliminar este movimiento?"
+  );
 
+  if (!confirmar) {
+    return;
+  }
 
-      localStorage.setItem(
-        "movimientos",
-        JSON.stringify(movimientos)
-      );
+  movimientos =
+    movimientos.filter(
+      movimiento => movimiento.id !== id
+    );
 
+  localStorage.setItem(
+    "movimientos",
+    JSON.stringify(movimientos)
+  );
 
-      actualizarFinanzas();
+  actualizarFinanzas();
 
-    }
+}
 
 
     function actualizarFinanzas() {
