@@ -214,41 +214,50 @@ select:focus {
 }
 
   .movement {
-    background: white;
-    border: 1px solid #eee8e1;
-    border-radius: 17px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 3px 12px rgba(60, 50, 40, 0.04);
-  }
+  background: #2d2d2d;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
 
-  .movement-info strong {
-    display: block;
-    margin-bottom: 4px;
-  }
+.movement-info strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
 
-  .movement-info small {
-    color: #888078;
-  }
+.movement-info small {
+  color: #aaaaaa;
+  font-size: 12px;
+}
 
-  .income {
-    color: #4f8061;
-  }
+.income {
+  color: #00BFA5;
+}
 
-  .expense {
-    color: #b65d52;
-  }
+.expense {
+  color: #FF5252;
+}
 
-  .delete {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 18px;
-  }
+.delete {
+  border: none;
+  background: none;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.delete:hover {
+  color: #FF5252;
+  transform: scale(1.1);
+}
 
   .empty {
     text-align: center;
