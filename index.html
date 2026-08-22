@@ -660,9 +660,9 @@ select:focus {
 
     let movimientos =
       JSON.parse(localStorage.getItem("movimientos")) || [];
-let marcas =
-  JSON.parse(localStorage.getItem("marcas")) || [];
+localStorage.removeItem("marcas");
 
+let marcas = [];
     function mostrarFinanzas() {
 
   document.getElementById("inicio")
