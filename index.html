@@ -1108,7 +1108,19 @@ function guardarMarca() {
 
 
     actualizarFinanzas();
+window.addEventListener("load", function () {
 
+  const pantallaGuardada = localStorage.getItem("pantallaActiva");
+
+  if (pantallaGuardada === "finanzas") {
+    mostrarFinanzas();
+  }
+
+  if (pantallaGuardada === "entrenamiento") {
+    mostrarEntrenamiento();
+  }
+
+});
   </script>
 
 </body>
