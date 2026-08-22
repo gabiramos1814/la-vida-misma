@@ -661,8 +661,8 @@ select:focus {
     let movimientos =
       JSON.parse(localStorage.getItem("movimientos")) || [];
 localStorage.removeItem("marcas");
-
-let marcas = [];
+let marcas =
+  JSON.parse(localStorage.getItem("marcas")) || [];
     function mostrarFinanzas() {
 
   document.getElementById("inicio")
