@@ -126,20 +126,41 @@
     color: #6f675f;
   }
 .mini-logo {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border: 1px solid rgba(255, 107, 53, 0.45);
   border-radius: 50%;
   background: #2d2d2d;
-  color: #ffffff;
-  font-size: 18px;
+  padding: 8px;
   cursor: pointer;
   margin-bottom: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.mini-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mini-logo svg line {
+  stroke: url(#miniLogoGradient);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.mini-logo svg circle {
+  fill: #2d2d2d;
+  stroke: url(#miniLogoGradient);
+  stroke-width: 5;
+}
+
+.mini-logo svg .center-node {
+  fill: #FF6B35;
 }
 
 .mini-logo:hover {
-  border-color: #FF6B35;
   transform: translateY(-1px);
+  border-color: #FF6B35;
 }
    
   .summary {
