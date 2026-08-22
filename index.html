@@ -463,9 +463,12 @@ function mostrarEntrenamiento() {
 
     }
 
-    function volverInicio() {
+   function volverInicio() {
 
       document.getElementById("finanzas")
+        .classList.remove("active");
+
+      document.getElementById("entrenamiento")
         .classList.remove("active");
 
       document.getElementById("inicio")
