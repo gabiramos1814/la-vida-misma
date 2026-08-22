@@ -6,214 +6,233 @@
 
   <title>La vida misma</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+ <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f6fa;
-      color: #222;
-      padding: 20px;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #222;
+    padding: 20px;
+  }
 
-    .app {
-      max-width: 500px;
-      margin: auto;
-    }
+  .app {
+    max-width: 500px;
+    margin: auto;
+  }
 
-    header {
-      margin-bottom: 25px;
-    }
+  header {
+    margin-bottom: 25px;
+  }
 
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 6px;
-    }
+  header h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
 
-    header p {
-      color: #777;
-      font-size: 15px;
-    }
+  header p {
+    color: #777;
+    font-size: 15px;
+  }
 
-    .welcome {
-      background: #222;
-      color: white;
-      border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 22px;
-    }
+  .welcome {
+    background: linear-gradient(135deg, #222 0%, #3a3a3a 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
 
-    .welcome h2 {
-      margin-bottom: 8px;
-    }
+  .welcome h2 {
+    margin-bottom: 8px;
+  }
 
-    .welcome p {
-      color: #ddd;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+  .welcome p {
+    color: #ddd;
+    font-size: 14px;
+    line-height: 1.5;
+  }
 
-    .card {
-      width: 100%;
-      background: white;
-      border: none;
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      text-align: left;
-      cursor: pointer;
-    }
+  .card {
+    width: 100%;
+    background: white;
+    border: none;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 
-    .card h2 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.09);
+  }
 
-    .card p {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.4;
-    }
+  .card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
 
-    .screen {
-      display: none;
-    }
+  .card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.4;
+  }
 
-    .screen.active {
-      display: block;
-    }
+  .screen {
+    display: none;
+  }
 
-    .back {
-      border: none;
-      background: none;
-      font-size: 15px;
-      cursor: pointer;
-      margin-bottom: 20px;
-      color: #555;
-    }
+  .screen.active {
+    display: block;
+  }
 
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+  .back {
+    border: none;
+    background: none;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: #555;
+  }
 
-    .summary-card {
-      background: white;
-      border-radius: 15px;
-      padding: 15px 10px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-    }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
 
-    .summary-card span {
-      display: block;
-      font-size: 12px;
-      color: #777;
-      margin-bottom: 6px;
-    }
+  .summary-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+  }
 
-    .summary-card strong {
-      font-size: 16px;
-    }
+  .summary-card span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 6px;
+  }
 
-    .form {
-      background: white;
-      padding: 20px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-    }
+  .summary-card strong {
+    font-size: 16px;
+  }
 
-    .form h3 {
-      margin-bottom: 15px;
-    }
+  .form {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+  }
 
-    label {
-      display: block;
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 6px;
-      margin-top: 12px;
-    }
+  .form h3 {
+    margin-bottom: 15px;
+  }
 
-    input,
-    select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 15px;
-    }
+  label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
 
-    .save {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      margin-top: 18px;
-      background: #222;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+  input,
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+  }
 
-    .movement {
-      background: white;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-    }
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #222;
+    box-shadow: 0 0 0 3px rgba(34,34,34,0.08);
+  }
 
-    .movement-info strong {
-      display: block;
-      margin-bottom: 4px;
-    }
+  .save {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 18px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
 
-    .movement-info small {
-      color: #888;
-    }
+  .save:hover {
+    transform: translateY(-1px);
+  }
 
-    .income {
-      color: #20844a;
-    }
+  .movement {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+  }
 
-    .expense {
-      color: #c0392b;
-    }
+  .movement-info strong {
+    display: block;
+    margin-bottom: 4px;
+  }
 
-    .delete {
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 18px;
-    }
+  .movement-info small {
+    color: #888;
+  }
 
-    .empty {
-      text-align: center;
-      color: #999;
-      padding: 20px;
-    }
+  .income {
+    color: #20844a;
+  }
 
-    footer {
-      text-align: center;
-      color: #999;
-      font-size: 12px;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-  </style>
+  .expense {
+    color: #c0392b;
+  }
+
+  .delete {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .empty {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+  }
+
+  footer {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+</style>
 </head>
 
 <body>
