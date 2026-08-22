@@ -893,7 +893,52 @@ movimientos.forEach(movimiento => {
 
     }
 
+function guardarMarca() {
 
+  const ejercicio =
+    document.getElementById("marcaEjercicio").value;
+
+  const peso =
+    Number(document.getElementById("marcaPeso").value);
+
+  const fecha =
+    document.getElementById("marcaFecha").value;
+
+  if (!peso || peso <= 0) {
+
+    alert("Ingresá un peso válido.");
+
+    return;
+
+  }
+
+  const marca = {
+
+    id: Date.now(),
+
+    ejercicio: ejercicio,
+
+    peso: peso,
+
+    fecha: fecha ||
+      new Date().toISOString().split("T")[0]
+
+  };
+
+  marcas.push(marca);
+
+  localStorage.setItem(
+    "marcas",
+    JSON.stringify(marcas)
+  );
+
+  document.getElementById("marcaPeso").value = "";
+
+  document.getElementById("marcaFecha").value = "";
+
+  alert("🏆 Marca guardada.");
+
+}
     function formatearDinero(numero) {
 
       return new Intl.NumberFormat(
