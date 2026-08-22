@@ -109,13 +109,27 @@
   font-size: 14px;
   line-height: 1.6;
 }
-  .screen {
-    display: none;
+
+   .screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+  animation: screenIn 0.35s ease;
+}
+
+@keyframes screenIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 
-  .screen.active {
-    display: block;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
   .back {
     border: none;
