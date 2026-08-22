@@ -15,8 +15,8 @@
 
   body {
     font-family: Arial, sans-serif;
-    background: #f5f6fa;
-    color: #222;
+    background: #f7f4ef;
+    color: #292522;
     padding: 20px;
   }
 
@@ -26,46 +26,50 @@
   }
 
   header {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
+    padding: 4px 2px;
   }
 
   header h1 {
-    font-size: 32px;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -1px;
     margin-bottom: 6px;
   }
 
   header p {
-    color: #777;
+    color: #817a73;
     font-size: 15px;
   }
 
   .welcome {
-    background: linear-gradient(135deg, #222 0%, #3a3a3a 100%);
+    background: linear-gradient(135deg, #756b61, #514941);
     color: white;
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 22px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    border-radius: 24px;
+    padding: 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(70, 60, 50, 0.18);
   }
 
   .welcome h2 {
-    margin-bottom: 8px;
+    font-size: 23px;
+    margin-bottom: 9px;
   }
 
   .welcome p {
-    color: #ddd;
+    color: #eee9e3;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .card {
     width: 100%;
-    background: white;
-    border: none;
-    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #eee8e1;
+    border-radius: 20px;
     padding: 22px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    margin-bottom: 14px;
+    box-shadow: 0 5px 18px rgba(60, 50, 40, 0.06);
     text-align: left;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -73,7 +77,7 @@
 
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 20px rgba(0,0,0,0.09);
+    box-shadow: 0 9px 22px rgba(60, 50, 40, 0.1);
   }
 
   .card h2 {
@@ -82,9 +86,9 @@
   }
 
   .card p {
-    color: #777;
+    color: #817a73;
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   .screen {
@@ -101,7 +105,7 @@
     font-size: 15px;
     cursor: pointer;
     margin-bottom: 20px;
-    color: #555;
+    color: #6f675f;
   }
 
   .summary {
@@ -113,16 +117,17 @@
 
   .summary-card {
     background: white;
-    border-radius: 15px;
+    border: 1px solid #eee8e1;
+    border-radius: 17px;
     padding: 15px 10px;
     text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.05);
   }
 
   .summary-card span {
     display: block;
     font-size: 12px;
-    color: #777;
+    color: #817a73;
     margin-bottom: 6px;
   }
 
@@ -132,10 +137,11 @@
 
   .form {
     background: white;
+    border: 1px solid #eee8e1;
     padding: 20px;
-    border-radius: 18px;
+    border-radius: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 14px rgba(60, 50, 40, 0.05);
   }
 
   .form h3 {
@@ -145,7 +151,7 @@
   label {
     display: block;
     font-size: 13px;
-    color: #666;
+    color: #6f675f;
     margin-bottom: 6px;
     margin-top: 12px;
   }
@@ -154,45 +160,48 @@
   select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    border: 1px solid #ddd5cc;
+    border-radius: 11px;
     font-size: 15px;
+    background: #fffdfb;
   }
 
   input:focus,
   select:focus {
     outline: none;
-    border-color: #222;
-    box-shadow: 0 0 0 3px rgba(34,34,34,0.08);
+    border-color: #756b61;
+    box-shadow: 0 0 0 3px rgba(117, 107, 97, 0.1);
   }
 
   .save {
     width: 100%;
     border: none;
-    border-radius: 12px;
+    border-radius: 13px;
     padding: 14px;
     margin-top: 18px;
-    background: #222;
+    background: #514941;
     color: white;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
   }
 
   .save:hover {
     transform: translateY(-1px);
+    background: #403a35;
   }
 
   .movement {
     background: white;
-    border-radius: 15px;
+    border: 1px solid #eee8e1;
+    border-radius: 17px;
     padding: 15px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    box-shadow: 0 3px 12px rgba(60, 50, 40, 0.04);
   }
 
   .movement-info strong {
@@ -201,15 +210,15 @@
   }
 
   .movement-info small {
-    color: #888;
+    color: #888078;
   }
 
   .income {
-    color: #20844a;
+    color: #4f8061;
   }
 
   .expense {
-    color: #c0392b;
+    color: #b65d52;
   }
 
   .delete {
