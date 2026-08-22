@@ -711,37 +711,41 @@ let marcas =
 
     function mostrarFinanzas() {
 
-      document.getElementById("inicio")
-        .classList.remove("active");
+  document.getElementById("inicio")
+    .classList.remove("active");
 
-      document.getElementById("finanzas")
-        .classList.add("active");
+  document.getElementById("finanzas")
+    .classList.add("active");
 
-      actualizarFinanzas();
+  localStorage.setItem("pantallaActiva", "finanzas");
 
-    }
+  actualizarFinanzas();
+}
+
 function mostrarEntrenamiento() {
 
-      document.getElementById("inicio")
-        .classList.remove("active");
+  document.getElementById("inicio")
+    .classList.remove("active");
 
-      document.getElementById("entrenamiento")
-        .classList.add("active");
+  document.getElementById("entrenamiento")
+    .classList.add("active");
 
-    }
+  localStorage.setItem("pantallaActiva", "entrenamiento");
+}
 
-   function volverInicio() {
+function volverInicio() {
 
-      document.getElementById("finanzas")
-        .classList.remove("active");
+  document.getElementById("finanzas")
+    .classList.remove("active");
 
-      document.getElementById("entrenamiento")
-        .classList.remove("active");
+  document.getElementById("entrenamiento")
+    .classList.remove("active");
 
-      document.getElementById("inicio")
-        .classList.add("active");
+  document.getElementById("inicio")
+    .classList.add("active");
 
-    }
+  localStorage.setItem("pantallaActiva", "inicio");
+}
 
 
     function agregarMovimiento() {
