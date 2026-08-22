@@ -651,86 +651,6 @@ select:focus {
 
  <div id="listaMarcas" style="margin-top: 20px;">
 
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Back Squat</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>70 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Front Squat</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>70 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Deadlift</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>103 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Power Clean</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>53 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Squat Clean</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>53 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Clean &amp; Jerk</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>45 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Snatch</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>35 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Strict Press</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>32,5 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Split Jerk</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>47,5 kg</strong>
-  </div>
-
-  <div class="movement">
-    <div class="movement-info">
-      <strong>Overhead Squat</strong>
-      <small>Mejor marca</small>
-    </div>
-    <strong>30 kg</strong>
-  </div>
-
 </div>
 
   </div>
@@ -1142,6 +1062,42 @@ function guardarMarca() {
 
   alert("🏆 ¡Nueva mejor marca guardada!");
 }
+    function mostrarMarcas() {
+
+  const lista = document.getElementById("listaMarcas");
+
+  lista.innerHTML = "";
+
+  if (marcas.length === 0) {
+    lista.innerHTML = `
+      <div class="empty">
+        Todavía no hay marcas registradas.
+      </div>
+    `;
+    return;
+  }
+
+  marcas.forEach(function(marca) {
+
+    const movimiento = document.createElement("div");
+
+    movimiento.className = "movement";
+
+    movimiento.innerHTML = `
+      <div class="movement-info">
+        <strong>${marca.ejercicio}</strong>
+        <small>Mejor marca · ${marca.fecha}</small>
+      </div>
+
+      <strong>${marca.peso} kg</strong>
+    `;
+
+    lista.appendChild(movimiento);
+
+  });
+}
+
+mostrarMarcas();
     function formatearDinero(numero) {
 
       return new Intl.NumberFormat(
