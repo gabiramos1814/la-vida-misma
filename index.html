@@ -1166,7 +1166,7 @@ function guardarMarca() {
     new Date().toISOString().split("T")[0];
 
   if (!peso || peso <= 0) {
-    alert("Ingresá un peso válido.");
+   mostrarToast("Ingresá un peso válido.");
     return;
   }
 
@@ -1183,9 +1183,9 @@ function guardarMarca() {
 
     } else {
 
-      alert(
-        `Tu mejor marca de ${ejercicio} sigue siendo ${marcas[indiceExistente].peso} kg.`
-      );
+    mostrarToast(
+  `Tu mejor marca de ${ejercicio} sigue siendo ${marcas[indiceExistente].peso} kg.`
+);
 
       return;
     }
@@ -1212,8 +1212,8 @@ function guardarMarca() {
 
   mostrarMarcas();
 
-  alert("🏆 ¡Nueva mejor marca guardada!");
-}
+ mostrarToast("🏆 ¡Nueva mejor marca guardada!");
+  
     function mostrarMarcas() {
 
   const lista = document.getElementById("listaMarcas");
