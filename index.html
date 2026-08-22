@@ -786,7 +786,12 @@ function mostrarEntrenamiento() {
   document.getElementById("entrenamiento")
     .classList.add("active");
 
-  localStorage.setItem("pantallaActiva", "entrenamiento");
+  const fecha = document.getElementById("marcaFecha");
+
+  if (fecha && !fecha.value) {
+    fecha.value = new Date().toISOString().split("T")[0];
+  }
+
 }
 
 function volverInicio() {
