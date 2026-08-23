@@ -853,6 +853,11 @@ function volverInicio() {
 
     function agregarMovimiento() {
 
+      const boton = document.getElementById("btnGuardarMovimiento");
+
+boton.disabled = true;
+boton.textContent = "Guardando...";
+
       const tipo =
         document.getElementById("tipo").value;
 
