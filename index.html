@@ -1185,6 +1185,11 @@ function mostrarToast(mensaje) {
 }
 function guardarMarca() {
 
+  const boton = document.getElementById("btnGuardarMarca");
+
+boton.disabled = true;
+boton.textContent = "Guardando...";
+
   const ejercicio =
     document.getElementById("marcaEjercicio").value;
 
