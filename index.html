@@ -1224,6 +1224,9 @@ boton.textContent = "Guardando...";
   `Tu mejor marca de ${ejercicio} sigue siendo ${marcas[indiceExistente].peso} kg.`
 );
 
+      boton.disabled = false;
+boton.textContent = "Guardar marca";
+      
       return;
     }
 
@@ -1245,7 +1248,7 @@ boton.textContent = "Guardando...";
   );
 
   document.getElementById("marcaPeso").value = "";
-  document.getElementById("marcaFecha").value = "";
+  document.getElementById("marcaFecha").value = fechaHoy();
 
   mostrarMarcas();
 
