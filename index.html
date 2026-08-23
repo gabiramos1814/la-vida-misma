@@ -895,6 +895,9 @@ function volverInicio() {
       document.getElementById("monto").value = "";
 
       document.getElementById("descripcion").value = "";
+
+      document.getElementById("fecha").value =
+  new Date().toISOString().split("T")[0];
       
       actualizarFinanzas();
       
