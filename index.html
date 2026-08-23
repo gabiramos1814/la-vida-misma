@@ -884,6 +884,9 @@ boton.textContent = "Guardando...";
       if (!monto || monto <= 0) {
 
        mostrarToast("Ingresá un monto válido.");
+
+        boton.disabled = false;
+boton.textContent = "Guardar movimiento";
         
         return;
 
@@ -1203,7 +1206,12 @@ boton.textContent = "Guardando...";
     new Date().toISOString().split("T")[0];
 
   if (!peso || peso <= 0) {
+    
    mostrarToast("Ingresá un peso válido.");
+
+    boton.disabled = false;
+boton.textContent = "Guardar marca";
+    
     return;
   }
 
