@@ -918,6 +918,9 @@ boton.textContent = "Guardando...";
       document.getElementById("fecha").value = fechaHoy();
       
       actualizarFinanzas();
+
+      boton.disabled = false;
+boton.textContent = "Guardar movimiento";
       
 mostrarToast("💰 Movimiento guardado correctamente.");
       
