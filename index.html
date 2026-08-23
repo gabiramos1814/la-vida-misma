@@ -787,6 +787,16 @@ select:focus {
 let marcas =
   JSON.parse(localStorage.getItem("marcas")) || [];
 
+    function fechaHoy() {
+  const hoy = new Date();
+
+  const año = hoy.getFullYear();
+  const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+  const dia = String(hoy.getDate()).padStart(2, "0");
+
+  return `${año}-${mes}-${dia}`;
+}
+
     function mostrarFinanzas() {
 
   document.getElementById("inicio")
@@ -800,7 +810,7 @@ let marcas =
   const fecha = document.getElementById("fecha");
 
   if (fecha && !fecha.value) {
-    fecha.value = new Date().toISOString().split("T")[0];
+    fecha.value = fechaHoy()
   }
 
   actualizarFinanzas();
@@ -817,7 +827,7 @@ function mostrarEntrenamiento() {
   const fecha = document.getElementById("marcaFecha");
 
   if (fecha && !fecha.value) {
-    fecha.value = new Date().toISOString().split("T")[0];
+    fecha.value = fechaHoy()
   }
 
 }
@@ -878,7 +888,7 @@ function volverInicio() {
           descripcion || "Sin descripción",
 
         fecha:
-          fecha || new Date().toISOString().split("T")[0]
+          fecha || fechaHoy()
 
       };
 
