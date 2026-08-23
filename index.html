@@ -906,8 +906,7 @@ function volverInicio() {
 
       document.getElementById("descripcion").value = "";
 
-      document.getElementById("fecha").value =
-  new Date().toISOString().split("T")[0];
+      document.getElementById("fecha").value = fechaHoy();
       
       actualizarFinanzas();
       
