@@ -1342,16 +1342,41 @@ mostrarMarcas();
 
 
     actualizarFinanzas();
+// Recuperar la pantalla al recargar
 window.addEventListener("load", function () {
 
   const pantallaGuardada = localStorage.getItem("pantallaActiva");
 
   if (pantallaGuardada === "finanzas") {
-    mostrarFinanzas();
+    mostrarFinanzas(false);
   }
 
   if (pantallaGuardada === "entrenamiento") {
-    mostrarEntrenamiento();
+    mostrarEntrenamiento(false);
+  }
+
+  if (pantallaGuardada === "inicio" || !pantallaGuardada) {
+    volverInicio(false);
+  }
+
+});
+
+
+// Manejar el botón Atrás del navegador
+window.addEventListener("popstate", function (event) {
+
+  const pantalla = event.state?.pantalla;
+
+  if (pantalla === "finanzas") {
+    mostrarFinanzas(false);
+  }
+
+  if (pantalla === "entrenamiento") {
+    mostrarEntrenamiento(false);
+  }
+
+  if (pantalla === "inicio" || !pantalla) {
+    volverInicio(false);
   }
 
 });
