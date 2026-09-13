@@ -811,10 +811,19 @@ let marcas =
   document.getElementById("inicio")
     .classList.remove("active");
 
+  document.getElementById("entrenamiento")
+    .classList.remove("active");
+
   document.getElementById("finanzas")
     .classList.add("active");
 
   localStorage.setItem("pantallaActiva", "finanzas");
+
+  history.pushState(
+    { pantalla: "finanzas" },
+    "",
+    "#finanzas"
+  );
 
   const fecha = document.getElementById("fecha");
 
@@ -830,11 +839,20 @@ function mostrarEntrenamiento() {
   document.getElementById("inicio")
     .classList.remove("active");
 
+  document.getElementById("finanzas")
+    .classList.remove("active");
+
   document.getElementById("entrenamiento")
     .classList.add("active");
 
   localStorage.setItem("pantallaActiva", "entrenamiento");
-  
+
+  history.pushState(
+    { pantalla: "entrenamiento" },
+    "",
+    "#entrenamiento"
+  );
+
   const fecha = document.getElementById("marcaFecha");
 
   if (fecha && !fecha.value) {
@@ -855,8 +873,14 @@ function volverInicio() {
     .classList.add("active");
 
   localStorage.setItem("pantallaActiva", "inicio");
-}
 
+  history.pushState(
+    { pantalla: "inicio" },
+    "",
+    "#inicio"
+  );
+
+}
 
     function agregarMovimiento() {
 
